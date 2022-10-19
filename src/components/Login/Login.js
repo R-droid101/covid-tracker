@@ -1,4 +1,5 @@
 import "./login.css";
+import React from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { firebaseConfig } from "../firebase/firebase";
@@ -72,33 +73,24 @@ const Login = (props) => {
         if (auth.currentUser.email) {
           sessionStorage.setItem("data", auth.currentUser.email);
         }
-
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
         const user = result.user;
         console.log(user);
         props.login();
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        const email = error.customData.email;
-
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.log(error);
       });
   };
   return (
     <>
-      <div className="image">
+      <div className="imageDiv">
         <img
-          src="https://wallpaperaccess.com/full/271873.jpg"
+          src="https://img.freepik.com/free-vector/clean-medical-background_53876-116875.jpg?w=1800&t=st=1666184041~exp=1666184641~hmac=38e7627434b9c8bbbea94f2e098bd828e1a2e6cb6e7fd4b6273c4702d8c55229"
           alt=""
           className="backgroundImage"
         />
       </div>
+
       {!clicked ? (
         <form onSubmit={submitHandler} className="loginForm">
           <span className="heading">Log in</span>
