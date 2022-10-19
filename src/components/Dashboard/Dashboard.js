@@ -11,6 +11,7 @@ import LineGraph from "./LineGraph";
 import Table from "./Table";
 import numeral from "numeral";
 import "leaflet/dist/leaflet.css";
+import "Dashboard.css";
 
 function Dashboard(props) {
   const [casesType, setCasesType] = useState("cases");
