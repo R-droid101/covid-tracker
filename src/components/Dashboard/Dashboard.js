@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   MenuItem,
   FormControl,
@@ -11,7 +11,7 @@ import LineGraph from "./LineGraph";
 import Table from "./Table";
 import numeral from "numeral";
 import "leaflet/dist/leaflet.css";
-import "Dashboard.css";
+import "./Dashboard.css";
 
 function Dashboard(props) {
   const [casesType, setCasesType] = useState("cases");
@@ -59,12 +59,12 @@ function Dashboard(props) {
             />
           </div>
           <div className="app__country">
-            {flag !== "" ? (
+            {props.flag !== "" ? (
               <h2>{props.countryInfo.country}</h2>
             ) : (
               <h2>Global Data</h2>
             )}
-            {flag !== "" ? (
+            {props.flag !== "" ? (
               <img className="image" src={props.flag} alt="Flag" />
             ) : (
               <div></div>
