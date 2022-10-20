@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useRef, useState } from "react";
+
 const Login = (props) => {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -19,6 +20,7 @@ const Login = (props) => {
   const passwordSignupRef = useRef();
   const [clicked, setClicked] = useState(false);
   const provider = new GoogleAuthProvider();
+
   const submitHandler = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(
@@ -38,9 +40,11 @@ const Login = (props) => {
         console.log(error);
       });
   };
+
   const clickHandler = () => {
     setClicked(true);
   };
+
   const signupHandler = (e) => {
     e.preventDefault();
     if (passwordSignupRef.current.value.length <= 6) {
@@ -64,9 +68,11 @@ const Login = (props) => {
         const errorMessage = error.message;
       });
   };
+
   const loginhandler = () => {
     setClicked(false);
   };
+
   const googleLogin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -81,6 +87,7 @@ const Login = (props) => {
         console.log(error);
       });
   };
+  
   return (
     <>
       <div className="imageDiv">
