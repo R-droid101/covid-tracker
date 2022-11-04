@@ -9,6 +9,7 @@ import {
 import InfoBox from "./InfoBox";
 import LineGraph from "./LineGraph";
 import Table from "./Table";
+import Map from "./Map";
 import numeral from "numeral";
 import "leaflet/dist/leaflet.css";
 import "./Dashboard.css";
@@ -92,6 +93,14 @@ function Dashboard(props) {
               {props.countryInfo.criticalPerOneMillion}
               <br />
             </p>
+          </div>
+          <div className="app_countrymap">
+            <Map
+              countries={props.mapCountries}
+              center={props.mapCenter}
+              zoom={props.zoom}
+              casesType={casesType}
+            />
           </div>
         </div>
         <Card className="app__right">

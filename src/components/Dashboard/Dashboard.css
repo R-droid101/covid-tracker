@@ -7,6 +7,16 @@
   margin-top: 10%;
 }
 
+.heading2 {
+  font-size: 2rem;
+  padding: 0rem 3rem 1rem 0rem;
+  margin: 2rem;
+}
+
+.news {
+  margin: 2rem;
+}
+
 .app {
   display: flex;
   justify-content: space-evenly;
@@ -76,4 +86,31 @@
   .app {
     flex-direction: column;
   }
+}
+
+.news__header {
+  display: flex;
+  padding: 8px;
+  gap: 24px;
+  align-items: center;
+}
+
+.news__header__img {
+  width: 200px;
+}
+
+.news a {
+  text-decoration: none;
+  background-color: rgb(57, 57, 240);
+  color: white;
+  padding: 8px 24px;
+}
+
+.news a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.news p {
+  margin-left: 18px;
 }

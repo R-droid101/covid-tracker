@@ -4,6 +4,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { sortData } from "./components/Dashboard/util";
 import Header from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
+import News from "./components/News/News";
 import {
   BrowserRouter,
   Router,
@@ -19,6 +20,9 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [flag, setFlag] = useState("");
+  const [mapCenter, setMapCenter] = useState([34.80746, -40.4796]);
+  const [zoom, setZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -41,6 +45,7 @@ const App = () => {
           let sortedData = sortData(data);
           setCountries(countries);
           setTableData(sortedData);
+          setMapCountries(data);
         });
     };
 
@@ -58,8 +63,14 @@ const App = () => {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
-        if (countryCode !== "worldwide") setFlag(data["countryInfo"].flag);
-        else setFlag("");
+        if (countryCode !== "worldwide") {
+          setFlag(data["countryInfo"].flag);
+          setMapCenter([34.80746, -40.4796]);
+        } else {
+          setFlag("");
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+          setZoom(4);
+        }
       });
   };
   const navigate = useNavigate();
@@ -97,6 +108,9 @@ const App = () => {
                   onCountryChange={onCountryChange}
                   tableData={tableData}
                   flag={flag}
+                  mapCenter={mapCenter}
+                  zoom={zoom}
+                  mapCountries={mapCountries}
                 />
               </>
             )
@@ -116,6 +130,19 @@ const App = () => {
                   tableData={tableData}
                   flag={flag}
                 />
+              </>
+            ) : (
+              <Login login={loginHandler} />
+            )
+          }
+        ></Route>
+        <Route
+          path="/news"
+          element={
+            loggedIn ? (
+              <>
+                <Header logout={logoutHandler} />
+                <News />
               </>
             ) : (
               <Login login={loginHandler} />
