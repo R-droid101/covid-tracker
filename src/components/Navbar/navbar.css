@@ -15,27 +15,42 @@
 }
 .titleHeading {
   margin-left: -6%;
+  cursor: pointer;
+}
+.addBtn:hover {
+  transition: all 0.2s;
+  background-color: white;
+  color: #7c0a02;
 }
 .logoutbtn:hover {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  color: white;
+  transition: all 0.2s;
+  background-color: white;
+  color: #7c0a02;
+}
+.addBtn {
+  transition: all 0.4s ease;
+  padding: 10px;
+  color: rgba(255, 255, 255);
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #7c0a02;
 }
 .logoutbtn {
   transition: all 0.4s ease;
   padding: 10px;
-  color: black;
+  color: rgba(255, 255, 255);
   padding-left: 15px;
   padding-right: 15px;
-
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
+  background-color: #7c0a02;
+
   border: none;
 }
 .main-image {

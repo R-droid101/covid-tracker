@@ -1,0 +1,85 @@
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  position: absolute;
+  margin-top: -700px;
+  margin-left: 440px;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  color: white;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+
+  border-radius: 20px;
+  /* background-image: url(""); */
+}
+.mainDiv span {
+  font-size: 22px;
+  font-weight: 200;
+}
+.backgroundImage {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.first,
+.second,
+.third,
+.fourth,
+.fifth,
+.sixth,
+.seventh,
+.eighth {
+  margin-bottom: 15px;
+}
+.mainDiv select {
+  padding: 10px;
+  border-radius: 20px;
+}
+.breath {
+  margin-left: 100px;
+}
+.years {
+  margin-left: 190px;
+}
+.cough {
+  margin-left: 230px;
+}
+.fever {
+  margin-left: 240px;
+}
+.female {
+  margin-left: 270px;
+}
+.submitUser {
+  width: 40%;
+  margin-left: 30%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-radius: 40px;
+  font-size: 22px;
+  border: none;
+  font-weight: 100;
+  cursor: pointer;
+  color: white;
+  background-color: #5072a7;
+}
+.submitUser:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.5s;
+}
+
+.abroad {
+  margin-left: 170px;
+}
+.contact {
+  margin-left: 27px;
+}
+.head {
+  margin-left: 195px;
+}

@@ -13,6 +13,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
+import NewUser from "./components/Dashboard/NewUser";
 
 const App = () => {
   const [country, setCountry] = useState("worldwide");
@@ -75,21 +76,29 @@ const App = () => {
   };
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
+  const newUser = () => {
+    navigate("/newUser");
+  };
   const logoutHandler = () => {
     sessionStorage.removeItem("data");
     setLoggedIn(false);
     navigate("/");
   };
+
   useEffect(() => {
     if (sessionStorage.getItem("data")) {
       setLoggedIn(true);
     }
   }, []);
-
+  const newsHandler = () => {
+    navigate("/news");
+  };
   const loginHandler = () => {
     setLoggedIn(true);
   };
-  console.log(loggedIn);
+  const homeHandler = () => {
+    navigate("/");
+  };
   return (
     <>
       <Routes>
@@ -100,7 +109,12 @@ const App = () => {
               <Login login={loginHandler} />
             ) : (
               <>
-                <Header logout={logoutHandler} />
+                <Header
+                  logout={logoutHandler}
+                  addNew={newUser}
+                  checkNews={newsHandler}
+                  home={homeHandler}
+                />
                 <Dashboard
                   country={country}
                   countries={countries}
@@ -121,7 +135,12 @@ const App = () => {
           element={
             loggedIn ? (
               <>
-                <Header logout={logoutHandler} />
+                <Header
+                  logout={logoutHandler}
+                  addNew={newUser}
+                  checkNews={newsHandler}
+                  home={homeHandler}
+                />
                 <Dashboard
                   country={country}
                   countries={countries}
@@ -137,11 +156,20 @@ const App = () => {
           }
         ></Route>
         <Route
+          path="/newUser"
+          element={loggedIn ? <NewUser /> : <Login login={loginHandler} />}
+        ></Route>
+        <Route
           path="/news"
           element={
             loggedIn ? (
               <>
-                <Header logout={logoutHandler} />
+                <Header
+                  logout={logoutHandler}
+                  addNew={newUser}
+                  checkNews={newsHandler}
+                  home={homeHandler}
+                />
                 <News />
               </>
             ) : (
