@@ -8,6 +8,7 @@ import News from "./components/News/News";
 import Volunteer from "./components/Volunteer/Volunteer";
 import NGOhomepage from "./components/NGO/NGOhomepage";
 import eventList from "./components/EventList/eventList";
+import Buttons from './components/Buttons/Buttons';
 import {
   BrowserRouter,
   Router,
@@ -96,6 +97,9 @@ const App = () => {
   const newsHandler = () => {
     navigate("/news");
   };
+  const newsHandler1 = () => {
+    navigate("/news");
+  };
   const volunteer = () => {
     navigate("/volunteer");
   };
@@ -177,11 +181,13 @@ const App = () => {
               <>
                 <Header
                   logout={logoutHandler}
-                  addNew={newUser}
-                  checkNews={newsHandler}
+                  // addNew={newUser}
+                  eventList={eventList}
+                  checkNews={newsHandler1}
                   home={homeHandler}
                   listEvents = {eventList}
                 />
+                <Buttons/>
                 <Dashboard
                   country={country}
                   countries={countries}

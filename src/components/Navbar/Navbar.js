@@ -12,18 +12,30 @@ const header = (props) => {
             Volunteer
           </button>
         ) : (
-          <button className="addBtn" onClick={props.listEvents}>
+          <>
+          </>          
+        )          
+        }
+        { props.eventList ? (
+        <button className="addBtn" onClick={props.listEvents}>
             eventList
           </button>
-        )          
+        ) : (<></>)
         }
       
         <button className="addBtn" onClick={props.checkNews}>
           Latest News
         </button>
-        <button className="addBtn" onClick={props.addNew}>
-          New user
-        </button>
+        {
+          props.addNew ? (
+          <button className="addBtn" onClick={props.addNew}>
+            New user
+          </button>
+          ) : (
+            <></>
+          )
+        }
+        
         <button className="logoutbtn" onClick={props.logout}>
           Logout
         </button>

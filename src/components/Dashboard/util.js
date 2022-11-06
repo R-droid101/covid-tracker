@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
+// import { useEffect } from "react";
+
+// useEffect(() => {
+//   fetch("https://disease.sh/v3/covid-19/all")
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // data = data;
+//       console.log(data);
+//     });
+// });
 
 const casesTypeColors = {
   cases: {
@@ -35,10 +45,15 @@ export const sortData = (data) => {
   return sortedData;
 };
 
+
+
 export const prettyPrintStat = (stat) =>
   stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
+// Delay(1000);
+
 export const showDataOnMap = (data, casesType = "cases") =>
+
 
 data ? (
   data.map((country) => (
@@ -75,9 +90,7 @@ data ? (
   ))
 ) : (
   <>
-    <div >
-      HI THERE!
-    </div>
+    <img src="https://media.npr.org/assets/img/2020/06/01/seamus-coronavirus-d3-world-map-20200323_wide-2af60c9806ed2cea1e48634ff079ab4e81ce70f4.png" alt="loading" />
   </>
 )
   
