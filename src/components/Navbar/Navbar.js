@@ -7,6 +7,17 @@ const header = (props) => {
         Covid Tracker
       </h1>
       <div id="container">
+        { props.volunteer ? (
+          <button className="addBtn" onClick={props.volunteer}>
+            Volunteer
+          </button>
+        ) : (
+          <button className="addBtn" onClick={props.listEvents}>
+            eventList
+          </button>
+        )          
+        }
+      
         <button className="addBtn" onClick={props.checkNews}>
           Latest News
         </button>

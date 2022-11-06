@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useRef, useState } from "react";
+import { Navigate, useNavigate, } from 'react-router-dom';
 
 const Login = (props) => {
   const app = initializeApp(firebaseConfig);
@@ -20,6 +21,7 @@ const Login = (props) => {
   const passwordSignupRef = useRef();
   const [clicked, setClicked] = useState(false);
   const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -41,7 +43,31 @@ const Login = (props) => {
       });
   };
 
+  const submitHandler1 = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(
+      auth,
+      emailRef.current.value,
+      passwordRef.current.value
+    )
+      .then((userCredential) => {
+        if (auth.currentUser.email) {
+          sessionStorage.setItem("data", auth.currentUser.email);
+        }
+        const user = userCredential.user;
+        console.log(user);
+        props.login();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      navigate("/NGOhomepage");
+  };
+
   const clickHandler = () => {
+    setClicked(true);
+  };
+  const clickHandler1 = () => {
     setClicked(true);
   };
 
@@ -69,6 +95,31 @@ const Login = (props) => {
       });
   };
 
+  const signupHandler1 = (e) => {
+    e.preventDefault();
+    if (passwordSignupRef.current.value.length <= 6) {
+      alert("weak");
+    }
+    const auth = getAuth();
+    createUserWithEmailAndPassword(
+      auth,
+      emailSignupRef.current.value,
+      passwordSignupRef.current.value
+    )
+      .then((userCredential) => {
+        if (auth.currentUser.email) {
+          sessionStorage.setItem("data", auth.currentUser.email);
+        }
+        const user = userCredential.user;
+        props.login();
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+      navigate("/NGOhomepage");
+  };
+
   const loginhandler = () => {
     setClicked(false);
   };
@@ -87,7 +138,7 @@ const Login = (props) => {
         console.log(error);
       });
   };
-  
+
   return (
     <>
       <div className="imageDiv">
@@ -99,65 +150,133 @@ const Login = (props) => {
       </div>
 
       {!clicked ? (
-        <form onSubmit={submitHandler} className="loginForm">
-          <span className="heading">Log in</span>
-          <label htmlFor="username">Email</label>
-          <input
-            type="text"
-            placeholder="Email"
-            id="username"
-            className="email"
-            ref={emailRef}
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="password"
-            id="password"
-            className="password"
-            ref={passwordRef}
-            required
-          />
-          <div className="googleLogin" onClick={googleLogin}>
-            <img
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
-              alt=""
+        <>
+          <form onSubmit={submitHandler} className="loginForm">
+            <span className="heading">Log in as user</span>
+            <label htmlFor="username">Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              id="username"
+              className="email"
+              ref={emailRef}
+              required
             />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              className="password"
+              ref={passwordRef}
+              required
+            />
+            <div className="googleLogin" onClick={googleLogin}>
+              <img
+                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                alt=""
+              />
 
-            <span>Sign in with Google</span>
-          </div>
-          <button className="loginButton">Log in</button>
-          <span className="already">
-            Don't have account? <b onClick={clickHandler}>Sign up</b>
-          </span>
-        </form>
+              <span>Sign in with Google</span>
+            </div>
+            <button className="loginButton">Log in</button>
+            <span className="already">
+              Don't have account? <b onClick={clickHandler}>Sign up</b>
+            </span>
+          </form>
+
+          {/* ###########################3333333333333333########################################## */}
+
+          <form onSubmit={submitHandler1} className="loginForm1">
+            <span className="heading">Log in as an NGO</span>
+            <label htmlFor="username">Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              id="username"
+              className="email"
+              ref={emailRef}
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              className="password"
+              ref={passwordRef}
+              required
+            />
+            <div className="googleLogin" onClick={googleLogin}>
+              <img
+                src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+                alt=""
+              />
+
+              <span>Sign in with Google</span>
+            </div>
+            <button className="loginButton">Log in</button>
+            <span className="already">
+              Don't have account? <b onClick={clickHandler1}>Sign up</b>
+            </span>
+          </form>
+          {/* ##################################################################################### */}
+        </>
       ) : (
-        <form onSubmit={signupHandler} className="loginForm">
-          <span className="heading">Register</span>
-          <label htmlFor="username">Email</label>
-          <input
-            type="text"
-            placeholder="Email"
-            id="username"
-            className="email"
-            ref={emailSignupRef}
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="password"
-            id="password"
-            className="password"
-            ref={passwordSignupRef}
-            required
-          />
-          <button className="signupButton">Sign up</button>
-          <span className="already">
-            Already have account? <b onClick={loginhandler}>Login</b>
-          </span>
-        </form>
+        <>
+          <form onSubmit={signupHandler} className="loginForm">
+            <span className="heading">Register as user</span>
+            <label htmlFor="username">Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              id="username"
+              className="email"
+              ref={emailSignupRef}
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              className="password"
+              ref={passwordSignupRef}
+              required
+            />
+            <button className="signupButton">Sign up</button>
+            <span className="already">
+              Already have account? <b onClick={loginhandler}>Login</b>
+            </span>
+          </form>
+
+          {/* ########################################################################################### */}
+          <form onSubmit={signupHandler1} className="loginForm1">
+            <span className="heading">Register as an NGO</span>
+            <label htmlFor="username">Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              id="username"
+              className="email"
+              ref={emailSignupRef}
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              id="password"
+              className="password"
+              ref={passwordSignupRef}
+              required
+            />
+            <button className="signupButton">Sign up</button>
+            <span className="already">
+              Already have account? <b onClick={loginhandler}>Login</b>
+            </span>
+          </form>
+        </>
       )}
     </>
   );
