@@ -18,7 +18,6 @@ function News(props) {
       .then((data) => {
         setNews(data.articles);
         setTotal(data.totalResults);
-        //   console.log(data.articles[0].title);
       });
   };
 
