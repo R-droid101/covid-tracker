@@ -1,0 +1,25 @@
+6. NGO home page - navbar ( dashboard,news page, list of events )
+   list of events - shows all event details
+   Body - 2 options -> create event/view event
+7. Create event - registration form 
+8. View event - Can view own event ( shows registered user count & delete event )
+9. User home page - navbar(volunteer)
+10. volunteer page - list of events shown (same as list events + register for event)
+11. register form 
+
+
+
+NGO:
+Login for NGO
+NGO home page - navbar ( dashboard,news page, list of events )
+   list of events - shows all event details
+   Body - 2 options -> create event/view event
+   
+Create event - registration form 
+View event - Can view own event ( shows registered user count & delete event )
+
+
+User:
+
+volunteer page - list of events shown (same as list events + register for event)
+register form 

@@ -5,6 +5,9 @@ import { sortData } from "./components/Dashboard/util";
 import Header from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import News from "./components/News/News";
+import Volunteer from "./components/Volunteer/Volunteer";
+import NGOhomepage from "./components/NGO/NGOhomepage";
+import eventList from "./components/EventList/eventList";
 import {
   BrowserRouter,
   Router,
@@ -93,6 +96,12 @@ const App = () => {
   const newsHandler = () => {
     navigate("/news");
   };
+  const volunteer = () => {
+    navigate("/volunteer");
+  };
+  const eventList = () => {
+    navigate("/eventList");
+  };
   const loginHandler = () => {
     setLoggedIn(true);
   };
@@ -114,6 +123,7 @@ const App = () => {
                   addNew={newUser}
                   checkNews={newsHandler}
                   home={homeHandler}
+                  volunteer={volunteer}
                 />
                 <Dashboard
                   country={country}
@@ -140,6 +150,7 @@ const App = () => {
                   addNew={newUser}
                   checkNews={newsHandler}
                   home={homeHandler}
+                  volunteer={volunteer}
                 />
                 <Dashboard
                   country={country}
@@ -160,6 +171,32 @@ const App = () => {
           element={loggedIn ? <NewUser /> : <Login login={loginHandler} />}
         ></Route>
         <Route
+          path="/NGOhomepage"
+          element={
+            loggedIn ? (
+              <>
+                <Header
+                  logout={logoutHandler}
+                  addNew={newUser}
+                  checkNews={newsHandler}
+                  home={homeHandler}
+                  listEvents = {eventList}
+                />
+                <Dashboard
+                  country={country}
+                  countries={countries}
+                  countryInfo={countryInfo}
+                  onCountryChange={onCountryChange}
+                  tableData={tableData}
+                  flag={flag}
+                />
+              </>
+            ) : (
+              <Login login={loginHandler} />
+            )
+          }
+        ></Route>
+        <Route
           path="/news"
           element={
             loggedIn ? (
@@ -169,6 +206,7 @@ const App = () => {
                   addNew={newUser}
                   checkNews={newsHandler}
                   home={homeHandler}
+                  volunteer={volunteer}
                 />
                 <News />
               </>
