@@ -24,19 +24,35 @@ const NewUser = () => {
     setHf(e.target.value);
   };
   const select5Handler = (e) => {
-    setHba(e.target.value);
+    setIsf(e.target.value);
   };
   const select6Handler = (e) => {
-    setCwc(e.target.value);
+    setHba(e.target.value);
   };
   const select7Handler = (e) => {
-    setIsf(e.target.value);
+    setCwc(e.target.value);
   };
   const select8Handler = (e) => {
     setHh(e.target.value);
   };
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    fetch("http://localhost:8800/api/users/", {
+      method: "POST",
+      body: JSON.stringify({
+        breath_shortness: sb,
+        above_60: a60,
+        has_cough: hc,
+        has_fever: hf,
+        female: isf,
+        have_travelled: hba,
+        contact_with_someone: cwc,
+        have_headache: hh,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => console.log(res));
     const arr = [];
     arr.push(sb);
     arr.push(a60);

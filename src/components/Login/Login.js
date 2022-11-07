@@ -31,14 +31,6 @@ const Login = (props) => {
       passwordRef.current.value
     )
       .then((userCredential) => {
-        fetch("localhost:8800/api/auth/login", {
-          method: "POST",
-          crossorigin: true,
-          body: JSON.stringify({
-            username: emailRef.current.value,
-            password: passwordRef.current.value,
-          }),
-        }).then((res) => console.log(res));
         if (auth.currentUser.email) {
           sessionStorage.setItem("data", auth.currentUser.email);
         }
@@ -51,26 +43,26 @@ const Login = (props) => {
       });
   };
 
-  const submitHandler1 = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(
-      auth,
-      emailRef.current.value,
-      passwordRef.current.value
-    )
-      .then((userCredential) => {
-        if (auth.currentUser.email) {
-          sessionStorage.setItem("data", auth.currentUser.email);
-        }
-        const user = userCredential.user;
-        console.log(user);
-        props.login();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    navigate("/NGOhomepage");
-  };
+  // const submitHandler1 = (e) => {
+  //   e.preventDefault();
+  //   signInWithEmailAndPassword(
+  //     auth,
+  //     emailRef.current.value,
+  //     passwordRef.current.value
+  //   )
+  //     .then((userCredential) => {
+  //       if (auth.currentUser.email) {
+  //         sessionStorage.setItem("data", auth.currentUser.email);
+  //       }
+  //       const user = userCredential.user;
+  //       console.log(user);
+  //       props.login();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   navigate("/NGOhomepage");
+  // };
 
   const clickHandler = () => {
     setClicked(true);
@@ -194,15 +186,15 @@ const Login = (props) => {
                 alt=""
               />
 
-              <span>Sign in with Google</span>
+              <span className="googleButton">Sign in with Google</span>
             </div>
             <button className="loginButton">Log in</button>
             <span className="already">
               Don't have account? <b onClick={clickHandler}>Sign up</b>
             </span>
           </form>
-          ###########################3333333333333333##########################################
-          <form onSubmit={submitHandler1} className="loginForm1">
+          {/* ###########################3333333333333333########################################## */}
+          {/* <form onSubmit={submitHandler1} className="loginForm1">
             <span className="heading">Log in as an NGO</span>
             <label htmlFor="username">Email</label>
             <input
@@ -234,7 +226,7 @@ const Login = (props) => {
             <span className="already">
               Don't have account? <b onClick={clickHandler1}>Sign up</b>
             </span>
-          </form>
+          </form> */}
           {/* ##################################################################################### */}
         </>
       ) : (
@@ -266,7 +258,7 @@ const Login = (props) => {
           </form>
 
           {/* ########################################################################################### */}
-          <form onSubmit={signupHandler1} className="loginForm1">
+          {/* <form onSubmit={signupHandler1} className="loginForm1">
             <span className="heading">Register as an NGO</span>
             <label htmlFor="username">Email</label>
             <input
@@ -290,7 +282,7 @@ const Login = (props) => {
             <span className="already">
               Already have account? <b onClick={loginhandler}>Login</b>
             </span>
-          </form>
+          </form> */}
         </>
       )}
     </>
