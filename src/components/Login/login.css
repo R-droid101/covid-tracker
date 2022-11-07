@@ -1,0 +1,189 @@
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+h1 {
+  color: black;
+}
+
+.imageDiv {
+  overflow-y: hidden;
+}
+
+.backgroundImage {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.heading {
+  font-size: 223%;
+  font-weight: 700;
+  color: black;
+}
+
+.background {
+  width: 830px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.already {
+  margin-left: 15%;
+}
+
+b {
+  cursor: pointer;
+}
+
+.background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.loginForm {
+  height: 520px;
+  background-color: rgba(255, 255, 255, 0.23);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 20%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  z-index: 999;
+}
+
+.loginForm {
+  width: 500px;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+  padding: 15px;
+}
+
+.loginForm1 {
+  height: 550px;
+  background-color: rgba(255, 255, 255, 0.23);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 70%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  z-index: 999;
+}
+
+.loginForm1 {
+  width: 600px;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+  padding: 15px;
+}
+
+.email:focus {
+  outline: none;
+}
+
+.password:focus {
+  outline: none;
+}
+
+.loginForm h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+::placeholder {
+  color: #413d3d;
+}
+
+.email,
+.password {
+  color: black;
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  border: none;
+}
+
+.loginButton,
+.signupButton {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #8a2b06;
+  color: white;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 5%;
+}
+
+.googleLogin img {
+  width: 32px;
+  height: 32px;
+  margin-left: 8%;
+}
+
+.googleLogin span {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-left: 6%;
+}
+
+.googleLogin {
+  cursor: pointer;
+  margin-top: 7%;
+  width: 80%;
+  height: 10%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #8a2b06;
+}
+
+.loginButton:active,
+.signupButton:active {
+  background-color: #541a03dc;
+  transition: all ease-in;
+}
