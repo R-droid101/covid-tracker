@@ -1,33 +1,43 @@
 import React, { useState } from 'react';
 import {database} from '../firebase/firebase';
+import './CreateEvent.css';
 
-const [title, setTitle] = useState();
-const [desc, setDesc] = useState();
-const [date, setDate] = useState();
-const [time, setTime] = useState();
-const [location, setLocation] = useState();
-const [phn, setPhn] = useState();
-const [coordinatorName, setCoordinatorName] = useState();
-const [url, setUrl] = useState();
 
-function createEvent () {
+
+export default function CreateEvent() {
+    const [title, setTitle] = useState();
+    const [desc, setDesc] = useState();
+    const [date, setDate] = useState();
+    const [location, setLocation] = useState();
+    const [phn, setPhn] = useState();
+    const [coordinatorName, setCoordinatorName] = useState();
+    const [url, setUrl] = useState();
     
-    const Push = () => {
-        database.ref('events').push({
-            title: 'Event Title',
-            coordinatorName: 'Coordinator Name',
-            url: 'Website URL',
-            description: 'Event Description',
-            date: 'Event Date',
-            time: 'Event Time',
-            location: 'Event Location',
-            contact: 'Event Contact'
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const databody = {
+            title,
+            desc,
+            date,
+            location,
+            phn,
+            coordinatorName,
+            url
+        }
+        fetch('localhost:8800/api/events', {
+            method: 'POST',
+            body: JSON.stringify(databody),
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
 return (
     <>
-    <form action="POST" className="containerr">
+    <form action="#" className="containerr" onSubmit={handleSubmit}>
         <fieldset>
         <legend className="tit">Create your Event here</legend>
         <div className="form-control">
@@ -70,8 +80,8 @@ return (
             <label for="message">Event Description:</label>
             <textarea
             id="message"
-            onChange={(e) => setDesc(e.target.value)}
             value={desc}
+            onChange={(e) => setDesc(e.target.value)}
             cols="30"
             rows="10"
             placeholder="Describe your event"
@@ -83,8 +93,8 @@ return (
             <input
             type="date"
             id="date"
-            onChange={(e) => setDate(e.target.value)}
             value={date}
+            onChange={(e) => setDate(e.target.value)}            
             placeholder="Date of event"
             required
             />
@@ -94,8 +104,8 @@ return (
             <input
             type="tel"
             id="tel"
-            onChange={(e) => setPhn(e.target.value)}
             value={phn}
+            onChange={(e) => setPhn(e.target.value)}            
             placeholder="Phone number"
             required
             />
@@ -104,8 +114,8 @@ return (
             <label for="message">Event Address:</label>
             <textarea
             id="message"
-            onChange={(e) => setLocation(e.target.value)}
             value={location}
+            onChange={(e) => setLocation(e.target.value)}            
             // cols="3"
             rows="3"
             placeholder="Address of event"
@@ -120,4 +130,3 @@ return (
 );
 }
 
-export default createEvent;

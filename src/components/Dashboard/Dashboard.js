@@ -18,10 +18,10 @@ function Dashboard(props) {
   const [casesType, setCasesType] = useState("cases");
 
   return (
-    <div>
-      <h1 className="heading">Dashboard</h1>
-      <div className="app">
-        <div className="app__left">
+    <div className="Jian" style={{overflow:"hidden",display:'flex',justifyContent:'center',flexWrap:'wrap',width:'100%',position:'absolute',left:0}}>
+      <h1 className="heading" style={{color:"aliceblue"}}>Dashboard</h1>
+      <div className="mainApp" style={{display:"flex",justifyContent:"space-between",width:'100%',flexWrap:'wrap'}}>
+        <div className="app__left" style={{width:'70%'}}>
           <div className="app__header">
             <FormControl className="app__dropdown">
               <Select
@@ -103,7 +103,8 @@ function Dashboard(props) {
             />
           </div>
         </div>
-        <Card className="app__right">
+        <div>
+        <Card className="app__right"style={{width:'90%'}}>
           <CardContent>
             <div className="app__information">
               <h3>Cases sorted according to Country</h3>
@@ -113,8 +114,10 @@ function Dashboard(props) {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
+    
   );
 }
 

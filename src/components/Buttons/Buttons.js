@@ -14,31 +14,7 @@ function Buttons() {
     };
     return (
     <>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/><br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/><br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/><br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/><br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/><br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    
         <button class="first" onClick={eventListHandler}>List of Events</button>
         <button class="first" onClick={createEventHandler}>Create an Event</button>
     </>

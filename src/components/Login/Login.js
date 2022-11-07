@@ -196,7 +196,7 @@ provider.setCustomParameters({ prompt: 'select_account' });
 
               <span>Sign in with Google</span>
             </div>
-            <button className="loginButton">Log in</button>
+            <button className="loginButton" onClick={submitHandler}>Log in</button>
             <span className="already">
               Don't have account? <b onClick={clickHandler}>Sign up</b>
             </span>
