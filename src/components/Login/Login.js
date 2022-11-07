@@ -1,13 +1,13 @@
 import "./login.css";
 import React from "react";
+import firebase from 'firebase/app'
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { firebaseConfig } from "../firebase/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider,
 } from "firebase/auth";
 import { useRef, useState } from "react";
 import { Navigate, useNavigate, } from 'react-router-dom';
@@ -21,6 +21,7 @@ const Login = (props) => {
   const passwordSignupRef = useRef();
   const [clicked, setClicked] = useState(false);
   const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
