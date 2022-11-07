@@ -56,7 +56,7 @@ const Login = (props) => {
         }
         const user = userCredential.user;
         console.log(user);
-        props.login();
+        // props.login();
       })
       .catch((error) => {
         console.log(error);
@@ -111,7 +111,7 @@ const Login = (props) => {
           sessionStorage.setItem("data", auth.currentUser.email);
         }
         const user = userCredential.user;
-        props.login();
+        // props.login();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -137,6 +137,22 @@ const Login = (props) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const googleLogin1 = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        if (auth.currentUser.email) {
+          sessionStorage.setItem("data", auth.currentUser.email);
+        }
+        const user = result.user;
+        console.log(user);
+        props.login();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      navigate("/NGOhomepage");
   };
 
   return (
@@ -207,7 +223,7 @@ const Login = (props) => {
               ref={passwordRef}
               required
             />
-            <div className="googleLogin" onClick={googleLogin}>
+            <div className="googleLogin" onClick={googleLogin1}>
               <img
                 src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
                 alt=""

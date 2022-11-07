@@ -1,3 +1,7 @@
+.body{
+  border: none;
+}
+
 .heading {
   color: #3c4048;
   font-size: 3.3rem;
@@ -19,7 +23,7 @@
 
 .app {
   display: flex;
-  justify-content: space-evenly;
+  align-content: strech;
   background-color: #eaeaea;
   padding: 20px;
 }
@@ -44,7 +48,7 @@
 }
 
 .app__left {
-  flex: 0.9;
+  /* flex: 0.9; */
 }
 
 .app__information > h3 {

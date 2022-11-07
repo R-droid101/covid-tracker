@@ -5,10 +5,12 @@ import { sortData } from "./components/Dashboard/util";
 import Header from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import News from "./components/News/News";
-import Volunteer from "./components/Volunteer/Volunteer";
-import NGOhomepage from "./components/NGO/NGOhomepage";
-import eventList from "./components/EventList/eventList";
+// import Volunteer from "./components/Volunteer/Volunteer";
+// import NGOhomepage from "./components/NGO/NGOhomepage";
+// import eventList from "./components/EventList/eventList";
 import Buttons from './components/Buttons/Buttons';
+import CreateEvent  from "./components/createEvent/CreateEvent";
+
 import {
   BrowserRouter,
   Router,
@@ -196,6 +198,26 @@ const App = () => {
                   tableData={tableData}
                   flag={flag}
                 />
+              </>
+            ) : (
+              <Login login={loginHandler} />
+            )
+          }
+        ></Route>
+        <Route
+          path="/createEvent"
+          element={
+            loggedIn ? (
+              <>
+                <Header
+                  logout={logoutHandler}
+                  // addNew={newUser}
+                  eventList={eventList}
+                  checkNews={newsHandler1}
+                  home={homeHandler}
+                  listEvents = {eventList}
+                />
+                <CreateEvent/>
               </>
             ) : (
               <Login login={loginHandler} />
