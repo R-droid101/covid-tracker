@@ -1,3 +1,16 @@
+.body{
+  border: none;
+}
+
+.mainApp {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+
+  background-color: #eaeaea;
+  padding: 20px;
+}
+
 .heading {
   color: #3c4048;
   font-size: 3.3rem;
@@ -17,12 +30,7 @@
   margin: 2rem;
 }
 
-.app {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #eaeaea;
-  padding: 20px;
-}
+
 
 .app__dropdown {
   background-color: #eaeaea;
@@ -48,7 +56,7 @@
 }
 
 .app__information > h3 {
-  /* color: #00ABB3; */
+  color: #00ABB3;
   color: #3c4048;
   font-weight: 400;
   font-size: 1.5rem;

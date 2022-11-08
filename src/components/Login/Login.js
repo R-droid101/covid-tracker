@@ -1,13 +1,13 @@
 import "./login.css";
 import React from "react";
+import firebase from 'firebase/app'
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { firebaseConfig } from "../firebase/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider,
 } from "firebase/auth";
 import { useRef, useState } from "react";
 import { Navigate, useNavigate, } from 'react-router-dom';
@@ -21,6 +21,7 @@ const Login = (props) => {
   const passwordSignupRef = useRef();
   const [clicked, setClicked] = useState(false);
   const provider = new GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
@@ -56,7 +57,7 @@ const Login = (props) => {
         }
         const user = userCredential.user;
         console.log(user);
-        props.login();
+        // props.login();
       })
       .catch((error) => {
         console.log(error);
@@ -111,7 +112,7 @@ const Login = (props) => {
           sessionStorage.setItem("data", auth.currentUser.email);
         }
         const user = userCredential.user;
-        props.login();
+        // props.login();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -137,6 +138,22 @@ const Login = (props) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const googleLogin1 = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        if (auth.currentUser.email) {
+          sessionStorage.setItem("data", auth.currentUser.email);
+        }
+        const user = result.user;
+        console.log(user);
+        props.login();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      navigate("/NGOhomepage");
   };
 
   return (
@@ -179,7 +196,7 @@ const Login = (props) => {
 
               <span>Sign in with Google</span>
             </div>
-            <button className="loginButton">Log in</button>
+            <button className="loginButton" onClick={submitHandler}>Log in</button>
             <span className="already">
               Don't have account? <b onClick={clickHandler}>Sign up</b>
             </span>
@@ -207,7 +224,7 @@ const Login = (props) => {
               ref={passwordRef}
               required
             />
-            <div className="googleLogin" onClick={googleLogin}>
+            <div className="googleLogin" onClick={googleLogin1}>
               <img
                 src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
                 alt=""
