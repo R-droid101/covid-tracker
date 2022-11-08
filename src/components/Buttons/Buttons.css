@@ -1,7 +1,7 @@
 body {
 	height: 100vh;
-	background: #19092d;
-	display: flex;
+	/* background: #19092d; */
+	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 }
@@ -34,7 +34,7 @@ button{
 	content: "";
 	background: #19c3d6;
 	display: block;
-	position: absolute;
+	/* position: absolute; */
 	left: 0;
 	right: 0;
 	top: 0;
